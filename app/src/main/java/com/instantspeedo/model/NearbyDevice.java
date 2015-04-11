@@ -1,4 +1,4 @@
-package com.instantspeedo.helper;
+package com.instantspeedo.model;
 
 import java.io.Serializable;
 
@@ -6,8 +6,6 @@ import java.io.Serializable;
  * Created by Jialiang on 4/11/15.
  */
 public class NearbyDevice implements Serializable{
-
-
 
     private String deviceID;
 
@@ -24,7 +22,6 @@ public class NearbyDevice implements Serializable{
     }
 
     public String getDeviceID() {
-
         return deviceID;
     }
 }
