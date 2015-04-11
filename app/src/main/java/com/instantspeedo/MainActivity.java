@@ -1,5 +1,6 @@
 package com.instantspeedo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -11,7 +12,9 @@ import android.widget.Button;
 
 public class MainActivity extends ActionBarActivity {
 
-    private final String TAG = "Test";
+    private final String TAG = "My Log";
+
+    public final static String MESSAGE_EXTRA = "nearbyDevices";
 
     public Button becomeHostButton;
 
@@ -24,19 +27,15 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         becomeHostButton = (Button) findViewById(R.id.becomeHostButton);
         findNearbyDevicesButton = (Button) findViewById(R.id.findNearByDevicesButton);
-
         becomeHostButton.setOnClickListener((View v) -> {
-
 
 
         });
 
         findNearbyDevicesButton.setOnClickListener((View v) -> {
-
-
-
+            Intent intent = new Intent(this, NearbyDevicesActivity.class);
+            startActivity(intent);
         });
-
 
         Log.i(TAG, "on start");
     }

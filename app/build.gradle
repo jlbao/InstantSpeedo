@@ -29,3 +29,10 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.0.0'
 }
+
+
+retrolambda {
+    jdk "/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home"
+    oldJdk "/System/Library/Frameworks/JavaVM.framework/1.6/Current/Home"
+    javaVersion JavaVersion.VERSION_1_6
+}

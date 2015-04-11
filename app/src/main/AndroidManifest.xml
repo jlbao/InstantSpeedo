@@ -12,13 +12,13 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".NearbyDevices"
-            android:label="@string/title_activity_nearby_devices" >
+            android:name=".NearbyDevicesActivity"
+            android:label="@string/title_activity_nearby_devices"
+            android:parentActivityName=".MainActivity">
         </activity>
     </application>
 

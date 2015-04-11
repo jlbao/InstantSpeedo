@@ -1,17 +1,24 @@
 package com.instantspeedo;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.instantspeedo.helper.NearbyDevice;
+
+import java.util.List;
 
 
-public class NearbyDevices extends ActionBarActivity {
+public class NearbyDevicesActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nearby_devices);
+        Intent intent = getIntent();
     }
 
 
@@ -33,7 +40,6 @@ public class NearbyDevices extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
