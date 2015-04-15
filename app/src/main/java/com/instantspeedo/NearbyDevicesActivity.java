@@ -5,28 +5,37 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.instantspeedo.helper.DeviceHelper;
 import com.instantspeedo.model.NearbyDevice;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Timer;
 
 
 public class NearbyDevicesActivity extends ActionBarActivity {
 
+    public final static int FIND_INTERVAL_SECONDS = 10;
+
     ListView deviceListView;
+    ProgressBar loadNearbyDeviceProgressBar;
+    Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nearby_devices);
-        Intent intent = getIntent();
-        List<NearbyDevice> deviceList = DeviceHelper.findNearbyDevices();
-        NearbyDeviceAdapter nearbyDeviceAdapter = new NearbyDeviceAdapter(this, deviceList);
         deviceListView = (ListView) findViewById(R.id.deviceListView);
-        deviceListView.setAdapter(nearbyDeviceAdapter);
+        loadNearbyDeviceProgressBar = (ProgressBar)findViewById(R.id.loadingNearbyDeviceProgressBar);
+
+        Intent intent = getIntent();
+        timer = new Timer();
+        timer.schedule(new FindDeviceTask(this), new Date(), FIND_INTERVAL_SECONDS * 1000);
     }
 
     @Override
