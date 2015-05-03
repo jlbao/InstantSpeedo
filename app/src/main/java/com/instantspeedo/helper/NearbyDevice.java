@@ -1,4 +1,4 @@
-package com.instantspeedo.model;
+package com.instantspeedo.helper;
 
 import java.io.Serializable;
 

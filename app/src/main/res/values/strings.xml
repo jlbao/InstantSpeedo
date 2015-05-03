@@ -4,4 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_nearby_devices">NearbyDevices</string>
+    <string name="title_activity_send_photo">SendPhotoActivity</string>
+    <string name="title_activity_wait_image">WaitImageActivity</string>
 </resources>

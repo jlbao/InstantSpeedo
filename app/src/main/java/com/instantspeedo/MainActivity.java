@@ -9,6 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.instantspeedo.host.ReceiveImageActivity;
+import com.instantspeedo.sender.FindNearbyDevicesActivity;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -28,12 +31,13 @@ public class MainActivity extends ActionBarActivity {
         becomeHostButton = (Button) findViewById(R.id.becomeHostButton);
         findNearbyDevicesButton = (Button) findViewById(R.id.findNearByDevicesButton);
         becomeHostButton.setOnClickListener((View v) -> {
-
-
+            // become host logic
+            Intent intent = new Intent(this, ReceiveImageActivity.class);
+            startActivity(intent);
         });
 
         findNearbyDevicesButton.setOnClickListener((View v) -> {
-            Intent intent = new Intent(this, NearbyDevicesActivity.class);
+            Intent intent = new Intent(this, FindNearbyDevicesActivity.class);
             startActivity(intent);
         });
 

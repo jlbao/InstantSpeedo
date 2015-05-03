@@ -1,11 +1,10 @@
-package com.instantspeedo;
+package com.instantspeedo.sender;
 
 import android.view.View;
 
 import com.instantspeedo.helper.DeviceHelper;
-import com.instantspeedo.model.NearbyDevice;
+import com.instantspeedo.helper.Shared;
 
-import java.util.List;
 import java.util.TimerTask;
 
 /**
@@ -14,9 +13,9 @@ import java.util.TimerTask;
  */
 public class FindDeviceTask extends TimerTask {
 
-    NearbyDevicesActivity activity;
+    FindNearbyDevicesActivity activity;
 
-    public FindDeviceTask(NearbyDevicesActivity activity) {
+    public FindDeviceTask(FindNearbyDevicesActivity activity) {
         this.activity = activity;
     }
 
@@ -26,16 +25,9 @@ public class FindDeviceTask extends TimerTask {
         activity.runOnUiThread(() -> {
             activity.loadNearbyDeviceProgressBar.setVisibility(View.VISIBLE);
         });
-        List<NearbyDevice> deviceList = DeviceHelper.findNearbyDevices();
-        try {
-            // mock the wait
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        // Once devices are found, update the UI to display the devices
+        DeviceHelper.findNearbyDevices();
         activity.runOnUiThread(() -> {
-            NearbyDeviceAdapter nearbyDeviceAdapter = new NearbyDeviceAdapter(activity, deviceList);
+            NearbyDeviceAdapter nearbyDeviceAdapter = new NearbyDeviceAdapter(activity, Shared.deviceList);
             activity.deviceListView.setAdapter(nearbyDeviceAdapter);
             activity.loadNearbyDeviceProgressBar.setVisibility(View.GONE);
         });

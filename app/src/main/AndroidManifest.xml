@@ -12,13 +12,22 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".NearbyDevicesActivity"
+            android:name=".sender.FindNearbyDevicesActivity"
             android:label="@string/title_activity_nearby_devices"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
+        </activity>
+        <activity
+            android:name=".sender.SendPhotoActivity"
+            android:label="@string/title_activity_send_photo" >
+        </activity>
+        <activity
+            android:name=".host.ReceiveImageActivity"
+            android:label="@string/title_activity_wait_image" >
         </activity>
     </application>
 
