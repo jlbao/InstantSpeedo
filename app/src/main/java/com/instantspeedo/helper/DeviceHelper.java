@@ -1,7 +1,5 @@
 package com.instantspeedo.helper;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -9,14 +7,19 @@ import java.util.Random;
  */
 public class DeviceHelper {
 
-    public static void findNearbyDevices() {
-        // mock some data
-        List<NearbyDevice> deviceList = new LinkedList<NearbyDevice>();
+    /**
+     * find nearby host devices
+     */
+    public static void findNearbyHostDevices() {
+        // do not forget to clean the list first
+        ClientShared.HOST_DEVICE_LIST.clear();
+
+        // do all find host logic here
         Random rand = new Random();
         int times = rand.nextInt(20);
         for (int i = 0; i < times; i++) {
-            deviceList.add(new NearbyDevice("hello world " + i));
+            ClientShared.HOST_DEVICE_LIST.add(new HostDevice("hello world " + i));
         }
-        Shared.deviceList = deviceList;
+        //---------------------------
     }
 }

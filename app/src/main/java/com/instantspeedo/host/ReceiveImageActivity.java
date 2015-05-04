@@ -43,9 +43,8 @@ public class ReceiveImageActivity extends ActionBarActivity {
             }
         });
 
-        Timer timer = new Timer();
-        timer.schedule(new ReceiveImageThread(this), new Date(), 5000);
-
+        // start receive image thread;
+        new Thread(new ReceiveImageThread(this)).start();
     }
 
 

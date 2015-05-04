@@ -1,9 +1,9 @@
-package com.instantspeedo.sender;
+package com.instantspeedo.client;
 
 import android.view.View;
 
+import com.instantspeedo.helper.ClientShared;
 import com.instantspeedo.helper.DeviceHelper;
-import com.instantspeedo.helper.Shared;
 
 import java.util.TimerTask;
 
@@ -11,11 +11,11 @@ import java.util.TimerTask;
  * Created by Jialiang on 4/14/15.
  * Find device thread
  */
-public class FindDeviceTask extends TimerTask {
+public class FindHostDevicesThread extends TimerTask {
 
     FindNearbyDevicesActivity activity;
 
-    public FindDeviceTask(FindNearbyDevicesActivity activity) {
+    public FindHostDevicesThread(FindNearbyDevicesActivity activity) {
         this.activity = activity;
     }
 
@@ -25,9 +25,10 @@ public class FindDeviceTask extends TimerTask {
         activity.runOnUiThread(() -> {
             activity.loadNearbyDeviceProgressBar.setVisibility(View.VISIBLE);
         });
-        DeviceHelper.findNearbyDevices();
+        // this will update the device list in client shared class
+        DeviceHelper.findNearbyHostDevices();
         activity.runOnUiThread(() -> {
-            NearbyDeviceAdapter nearbyDeviceAdapter = new NearbyDeviceAdapter(activity, Shared.deviceList);
+            NearbyDeviceAdapter nearbyDeviceAdapter = new NearbyDeviceAdapter(activity, ClientShared.HOST_DEVICE_LIST);
             activity.deviceListView.setAdapter(nearbyDeviceAdapter);
             activity.loadNearbyDeviceProgressBar.setVisibility(View.GONE);
         });

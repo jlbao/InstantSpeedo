@@ -1,4 +1,4 @@
-package com.instantspeedo.config;
+package com.instantspeedo.helper;
 
 /**
  * Created by Jialiang on 5/3/15.

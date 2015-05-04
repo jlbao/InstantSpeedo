@@ -1,4 +1,4 @@
-package com.instantspeedo.sender;
+package com.instantspeedo.client;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +9,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.instantspeedo.R;
-import com.instantspeedo.helper.Shared;
-import com.instantspeedo.helper.NearbyDevice;
+import com.instantspeedo.helper.ClientShared;
+import com.instantspeedo.helper.HostDevice;
 
 import java.util.Date;
 import java.util.Timer;
@@ -35,17 +34,14 @@ public class FindNearbyDevicesActivity extends ActionBarActivity {
         deviceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                NearbyDevice device = Shared.deviceList.get(position);
-                // should do the connection logic here
-                Toast.makeText(getApplicationContext(), device.getDeviceID(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(FindNearbyDevicesActivity.this, SendPhotoActivity.class);
-                startActivity(intent);
+                HostDevice device = ClientShared.HOST_DEVICE_LIST.get(position);
+                new Thread(new ConnectHostDeviceThread(FindNearbyDevicesActivity.this, device)).start();
             }
         });
         loadNearbyDeviceProgressBar = (ProgressBar) findViewById(R.id.loadingNearbyDeviceProgressBar);
         Intent intent = getIntent();
         timer = new Timer();
-        timer.schedule(new FindDeviceTask(this), new Date(), FIND_INTERVAL_SECONDS * 1000);
+        timer.schedule(new FindHostDevicesThread(this), new Date(), FIND_INTERVAL_SECONDS * 1000);
     }
 
     @Override

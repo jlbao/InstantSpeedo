@@ -1,17 +1,13 @@
 package com.instantspeedo.host;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.res.Resources;
-import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.instantspeedo.R;
-import com.instantspeedo.helper.Shared;
+import com.instantspeedo.helper.HostShared;
 
 /**
  * Created by Jialiang on 5/3/15.
@@ -26,7 +22,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return Shared.receivedImageURIList.size();
+        return HostShared.RECEIVED_IMAGE_URI_LIST.size();
     }
 
     public Object getItem(int position) {
@@ -50,7 +46,7 @@ public class ImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageURI(Shared.receivedImageURIList.get(position));
+        imageView.setImageURI(HostShared.RECEIVED_IMAGE_URI_LIST.get(position));
         return imageView;
     }
 

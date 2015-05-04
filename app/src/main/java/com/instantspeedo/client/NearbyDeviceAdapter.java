@@ -1,4 +1,4 @@
-package com.instantspeedo.sender;
+package com.instantspeedo.client;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,22 +8,22 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.instantspeedo.R;
-import com.instantspeedo.helper.NearbyDevice;
+import com.instantspeedo.helper.HostDevice;
 
 import java.util.List;
 
 /**
  * Created by Jialiang on 4/11/15.
  */
-public class NearbyDeviceAdapter extends ArrayAdapter<NearbyDevice> {
+public class NearbyDeviceAdapter extends ArrayAdapter<HostDevice> {
 
-    public NearbyDeviceAdapter(Context context, List<NearbyDevice> deviceList) {
+    public NearbyDeviceAdapter(Context context, List<HostDevice> deviceList) {
         super(context, R.layout.item_device, deviceList);
     }
 
     @Override
          public View getView(int position, View convertView, ViewGroup parent) {
-        NearbyDevice device = getItem(position);
+        HostDevice device = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_device, parent, false);
         }

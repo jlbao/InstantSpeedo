@@ -1,4 +1,4 @@
-package com.instantspeedo.sender;
+package com.instantspeedo.client;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,13 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.instantspeedo.R;
-import com.instantspeedo.config.IRequestCodeConfig;
+import com.instantspeedo.helper.IRequestCodeConfig;
+
+import java.io.File;
 
 
-public class SendPhotoActivity extends ActionBarActivity {
+public class SendImageActivity extends ActionBarActivity {
 
     Button pickImageButton;
 
@@ -26,14 +27,17 @@ public class SendPhotoActivity extends ActionBarActivity {
 
     Uri selectedImageURI;
 
+    ProgressBar loadingPanel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_photo);
+        setContentView(R.layout.activity_send_image);
 
         pickImageButton = (Button) findViewById(R.id.PickImageButton);
         sendImageButton = (Button) findViewById(R.id.sendImageButton);
         selectedImageView = (ImageView) findViewById(R.id.selectedImageView);
+        loadingPanel = (ProgressBar)findViewById(R.id.loadingPanel);
 
         pickImageButton.setOnClickListener((View v) -> {
             Intent imageIntent = new Intent();
@@ -44,7 +48,8 @@ public class SendPhotoActivity extends ActionBarActivity {
 
         sendImageButton.setOnClickListener((View v) -> {
             // send image logic
-            Toast.makeText(getApplicationContext(), selectedImageURI.getPath(), Toast.LENGTH_SHORT).show();
+            File file = new File(selectedImageURI.getPath());
+            new Thread(new SendImageThread(this, new File(file.getPath()))).start();
         });
     }
 

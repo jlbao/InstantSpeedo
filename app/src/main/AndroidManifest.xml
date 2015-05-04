@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".sender.FindNearbyDevicesActivity"
+            android:name=".client.FindNearbyDevicesActivity"
             android:label="@string/title_activity_nearby_devices"
             android:parentActivityName=".MainActivity" >
         </activity>
         <activity
-            android:name=".sender.SendPhotoActivity"
+            android:name=".client.SendImageActivity"
             android:label="@string/title_activity_send_photo" >
         </activity>
         <activity

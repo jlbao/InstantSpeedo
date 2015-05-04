@@ -9,7 +9,6 @@ import java.util.List;
 /**
  * Created by Jialiang on 5/3/15.
  */
-public class Shared {
-    public static List<NearbyDevice> deviceList;
-    public static List<Uri> receivedImageURIList = new ArrayList<Uri>();
+public class HostShared {
+    public final static List<Uri> RECEIVED_IMAGE_URI_LIST = new ArrayList<Uri>();
 }
