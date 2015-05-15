@@ -22,7 +22,7 @@ public class NearbyDeviceAdapter extends ArrayAdapter<HostDevice> {
     }
 
     @Override
-         public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         HostDevice device = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_device, parent, false);

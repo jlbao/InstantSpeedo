@@ -9,16 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.instantspeedo.host.ReceiveImageActivity;
 import com.instantspeedo.client.FindNearbyDevicesActivity;
+import com.instantspeedo.host.ReceiveImageActivity;
 
 
 public class MainActivity extends ActionBarActivity {
 
-    private final String TAG = "My Log";
-
     public final static String MESSAGE_EXTRA = "nearbyDevices";
-
+    private final String TAG = "My Log";
     public Button becomeHostButton;
 
     public Button findNearbyDevicesButton;
